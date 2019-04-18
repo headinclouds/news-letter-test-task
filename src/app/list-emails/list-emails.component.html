@@ -1,0 +1,23 @@
+<div>
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Email</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td><input type="checkbox" /> </td>
+        <td>{{user.email}} </td>
+        <td>
+          <button class="btn">Delete</button>
+          <button class="btn" [routerLink]="['/users', user.id]">Edit</button>
+          <button class="btn" (click)="open(user)">Show</button>
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+</div>

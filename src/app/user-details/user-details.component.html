@@ -1,0 +1,6 @@
+<div *ngIf="userDetails?.id">id: {{userDetails?.id}}</div>
+<div *ngIf="userDetails?.firstName">First Name: {{userDetails?.firstName}}</div>
+<div *ngIf="userDetails?.lastName">Last Name: {{userDetails?.lastName}}</div>
+<div *ngIf="userDetails?.email">Email: {{userDetails?.email}}</div>
+<div *ngIf="userDetails?.country">Country: {{userDetails?.country}}</div>
+<div *ngIf="userDetails?.dateOfBirth" >Date of Birth: {{userDetails?.dateOfBirth | date:'dd/MM/yyyy'}}</div>
