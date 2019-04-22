@@ -15,7 +15,6 @@ export class UserDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.userDetailsId = this.route.snapshot.paramMap.get('id');
-    console.log(this.userDetailsId, 'this.userDetailsId');
     this.emailsService.getEmails().subscribe((res) => {
       res.filter((item) => {
         if (this.userDetailsId == item.id) {
@@ -25,7 +24,7 @@ export class UserDetailsComponent implements OnInit {
       })
     },
       (err) => {
-        console.log(err);
+        console.log(err.message);
       })
 
   }

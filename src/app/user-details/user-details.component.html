@@ -1,6 +1,26 @@
-<div *ngIf="userDetails?.id">id: {{userDetails?.id}}</div>
-<div *ngIf="userDetails?.firstName">First Name: {{userDetails?.firstName}}</div>
-<div *ngIf="userDetails?.lastName">Last Name: {{userDetails?.lastName}}</div>
+<div *ngIf="userDetails?.id">id: {{userDetails?.id}} </div>
+<div *ngIf="userDetails?.firstName && !editFirstName">First Name: {{userDetails?.firstName}}
+    <button class="btn" (click)="editFirstName=true">Edit</button></div>
+<div class="input-group mb-3 input-group-sm" *ngIf="editFirstName">
+    <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username"
+        aria-describedby="button-addon2">
+    <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button">Save</button>
+        <button class="btn btn-outline-secondary" type="button">Cancel</button>
+
+    </div>
+</div>
+<div *ngIf="userDetails?.lastName && !editLastName">Last Name: {{userDetails?.lastName}}
+    <button class="btn" (click)="editLastName=true">Edit</button>
+</div>
+<div class="input-group mb-3 input-group-sm" *ngIf="editLastName">
+    <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username"
+        aria-describedby="button-addon2">
+    <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button">Save</button>
+        <button class="btn btn-outline-secondary" type="button">Cancel</button>
+    </div>
+</div>
 <div *ngIf="userDetails?.email">Email: {{userDetails?.email}}</div>
 <div *ngIf="userDetails?.country">Country: {{userDetails?.country}}</div>
-<div *ngIf="userDetails?.dateOfBirth" >Date of Birth: {{userDetails?.dateOfBirth | date:'dd/MM/yyyy'}}</div>
+<div *ngIf="userDetails?.dateOfBirth">Date of Birth: {{userDetails?.dateOfBirth | date:'dd/MM/yyyy'}}</div>

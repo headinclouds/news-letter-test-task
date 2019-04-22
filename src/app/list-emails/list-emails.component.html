@@ -1,4 +1,15 @@
 <div>
+  <div class="row">
+    <div class="col-4">
+      <p class="alert alert-info" role="alert">Selected {{listToDelete.length}} rows</p>
+    </div>
+    <div class="col-1"> <button class="btn  btn-primary" (click)="delete(listToDelete)"
+        [disabled]="!listToDelete?.length">Delete</button>
+    </div>
+    <div class="col-1"> <button class="btn  btn-primary" (click)="downloadCSV({})"
+        [disabled]="!listToDelete?.length">Download</button>
+    </div>
+  </div>
   <table class="table table-striped">
     <thead class="thead-dark">
       <tr>
@@ -8,11 +19,11 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of users">
-        <td><input type="checkbox" /> </td>
-        <td>{{user.email}} </td>
+      <tr *ngFor="let user of users | slice:10*(page-1):10*page; let i = index">
+        <td><input type="checkbox" id="email-{{user.id}}" (change)="addToList(user, user.id, $event)" /> </td>
+        <td>{{user.id}}. <label for="email-{{user.id}}">{{user.email}}</label> </td>
         <td>
-          <button class="btn">Delete</button>
+          <button class="btn" (click)="delete([user.id])">Delete</button>
           <button class="btn" [routerLink]="['/users', user.id]">Edit</button>
           <button class="btn" (click)="open(user)">Show</button>
         </td>
@@ -20,4 +31,10 @@
     </tbody>
 
   </table>
+
+  <ngb-pagination [collectionSize]="users?.length" [(page)]="page" aria-label="Custom pagination">
+    <ng-template ngbPaginationPrevious>Previous</ng-template>
+    <ng-template ngbPaginationNext>Next</ng-template>
+    <ng-template ngbPaginationNumber let-p>{{ p }}</ng-template>
+  </ngb-pagination>
 </div>

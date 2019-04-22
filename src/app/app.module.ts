@@ -1,21 +1,21 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
 import {NgbModalModule, NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { EmailsService } from './emails.service';
 
 import { AppComponent } from './app.component';
-import { EmailRowDirective } from './email-row.directive';
 import { RouterModule, Routes } from '@angular/router';
-import { UserDetailsComponent } from './user-details/user-details.component';
 import { ListEmailsComponent } from './list-emails/list-emails.component';
 import { NgbdModalContent } from './modal/modal.component';
 
 const appRoutes: Routes = [
   {
     path: 'users/:id',
-    component: UserDetailsComponent
+    loadChildren: './users/users.module#UsersModule'
   },
   {
     path: '',
@@ -31,8 +31,6 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    EmailRowDirective,
-    UserDetailsComponent,
     ListEmailsComponent,
     NgbdModalContent
   ],
@@ -42,6 +40,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     NgbModalModule,
     NgbPaginationModule,
+    FormsModule,
     RouterModule.forRoot(
       appRoutes
     )

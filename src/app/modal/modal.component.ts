@@ -14,7 +14,7 @@ export class NgbdModalContent implements OnInit {
   ngOnInit() {
     let dateOfBirth = new Date(this.user.dateOfBirth);
     var ageDifMs = Date.now() - dateOfBirth.getTime();
-    var ageDate = new Date(ageDifMs); // miliseconds from epoch
+    var ageDate = new Date(ageDifMs);
     this.age = Math.abs(ageDate.getUTCFullYear() - 1970);
   }
 
