@@ -16,6 +16,7 @@ export class ListEmailsComponent implements OnInit {
   listToExport:  Array<any> = [];
   page: number = 1;
   usersToShow:  Array<any>;
+  email: any=[];
 
   constructor(private emailsService: EmailsService,
     private modalService: NgbModal) { }
@@ -84,15 +85,12 @@ export class ListEmailsComponent implements OnInit {
         return null;
     }
 
-    columnDelimiter = ',';
+    columnDelimiter = ';';
     lineDelimiter = '\n';
 
     keys = Object.keys(data[0]);
 
     result = '';
-    result += keys.join(columnDelimiter);
-    result += lineDelimiter;
-
     data.forEach(function(item) {
         ctr = 0;
         keys.forEach(function(key) {

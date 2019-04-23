@@ -1,0 +1,15 @@
+.btn-primary.btn-sm.delete {
+    margin-left: 10px;
+}
+
+.buttons-block{
+    margin-bottom: 1rem;
+}
+
+table button {
+    margin-right: 10px;
+}
+
+table td:last-child {
+    text-align: right;
+}

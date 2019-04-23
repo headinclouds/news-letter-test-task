@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { UserDetailsComponent } from '../user-details/user-details.component';
+import { FormsModule } from '@angular/forms';
+import { ModalUserDetailsComponent } from '../modal-user-details/modal-user-details.component';
+import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
 
 const routes: Routes = [
   {
@@ -10,8 +13,11 @@ const routes: Routes = [
 ];
 @NgModule({
   imports: [
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    NgbModalModule
   ],
-  exports: [RouterModule]
+  declarations: [ModalUserDetailsComponent],
+  entryComponents: [ModalUserDetailsComponent],
+  exports: [RouterModule, FormsModule]
 })
 export class UserDetailsRoutingModule { }

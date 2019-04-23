@@ -1,26 +1,34 @@
-<div *ngIf="userDetails?.id">id: {{userDetails?.id}} </div>
-<div *ngIf="userDetails?.firstName && !editFirstName">First Name: {{userDetails?.firstName}}
-    <button class="btn" (click)="editFirstName=true">Edit</button></div>
-<div class="input-group mb-3 input-group-sm" *ngIf="editFirstName">
-    <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username"
-        aria-describedby="button-addon2">
-    <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button">Save</button>
-        <button class="btn btn-outline-secondary" type="button">Cancel</button>
+<div class="card">
+    <div class="card-body">
+        <form #userForm="ngForm">
+            <p class="col" *ngIf="userDetails?.id">id: {{userDetails?.id}} </p>
+            <p class="col" *ngIf="userDetails?.firstName && !edit">First Name: {{userDetails?.firstName}}
+            </p>
+            <p class="col"><input *ngIf="edit" #firstName="ngModel" [(ngModel)]="userDetails.firstName" type="text"
+                    name="firstName" class="form-control" minlength="1" pattern="[a-zA-Z ]*" required
+                    placeholder="First Name" />
+            </p>
+
+            <p class="col" *ngIf="userDetails?.lastName && !edit">
+                Last Name: {{userDetails?.lastName}}
+            </p>
+            <p class="col"><input *ngIf="edit" name="lastName" #lastName="ngModel" [(ngModel)]="userDetails.lastName"
+                    type="text" class="form-control" placeholder="Last Name" minlength="1" pattern="[a-zA-Z ]*"
+                    required />
+            </p>
+
+            <p class="col" *ngIf="userDetails?.email">Email: {{userDetails?.email}}</p>
+            <p class="col" *ngIf="userDetails?.country">Country: {{userDetails?.country}}</p>
+            <p class="col" *ngIf="userDetails?.dateOfBirth">Date of Birth:
+                {{userDetails?.dateOfBirth | date:'dd/MM/yyyy'}}</p>
+            <div class="col">
+                <button class="btn" class="btn btn-primary sm-btn" *ngIf="!edit" (click)="edit=true">Edit</button>
+                <button class="btn btn-primary sm-btn" *ngIf="edit" (click)="sendUser()"
+                    [disabled]="userForm.status != 'VALID'" type="submit">Save</button>
+                <button class="btn btn-secondary sm-btn" *ngIf="edit" (click)="cancel()">Cancel</button>
+            </div>
+
+        </form>
 
     </div>
 </div>
-<div *ngIf="userDetails?.lastName && !editLastName">Last Name: {{userDetails?.lastName}}
-    <button class="btn" (click)="editLastName=true">Edit</button>
-</div>
-<div class="input-group mb-3 input-group-sm" *ngIf="editLastName">
-    <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username"
-        aria-describedby="button-addon2">
-    <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button">Save</button>
-        <button class="btn btn-outline-secondary" type="button">Cancel</button>
-    </div>
-</div>
-<div *ngIf="userDetails?.email">Email: {{userDetails?.email}}</div>
-<div *ngIf="userDetails?.country">Country: {{userDetails?.country}}</div>
-<div *ngIf="userDetails?.dateOfBirth">Date of Birth: {{userDetails?.dateOfBirth | date:'dd/MM/yyyy'}}</div>
