@@ -1,6 +1,14 @@
 # NewsLetterTestTask
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.5.
+## Demo
+
+https://headinclouds.github.io/news-letter-test-task/
+
+## Instalation 
+
+1. You need to install node.js on your computer (https://nodejs.org/en/)
+2. From root of project run `npm install`.
 
 ## Development server
 
