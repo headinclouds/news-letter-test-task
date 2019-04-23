@@ -9,6 +9,11 @@
 table button {
     margin-right: 10px;
 }
+@media  (max-width: 500px) {
+    table button {
+        margin-bottom:5px;
+    }
+}
 
 table td:last-child {
     text-align: right;
